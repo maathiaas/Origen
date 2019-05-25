@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Iniciar sesion</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1> Bienvenido </h1>
+    
+    <p>
+        Puedes iniciar sesión aquí!
+    </p>
+
+
+    <h2>Iniciar sesión</h2>
+
+    <form  method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    
+    <br>
+
+  <p><strong>-- O --</strong></p>
+  <a href="#">Iniciar sesión con  GitHub</a><br>
+  <a href="#">Login with Facebook</a>
+
+</div>
+{% endblock %}

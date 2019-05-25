@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Registro</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Registro</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- Para dar estilo , debo quitar {{ form.as_p }}  y crear imput con un atributo 
+        name, en donde name tendra por contenido  el campo que quier llenar ejemplo,
+        name='first_name '-->
+
+
+        <button type="submit">Registrar</button>
+        <p><strong>-- O --</strong></p>
+        <a href="#">Registar con  GitHub</a><br>
+        <a href="#">Login with Facebook</a>
+    </form>
+</div>
+{% endblock %}
