@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posts</title>
+</head>
+
+<body>
+    <div>
+        <h1>
+            <a href="/"> Django chicas Blog </a>
+        </h1>
+    </div>{% for post in posts %} <div>
+        <p> publicado: {{ post.fecha_publicacion }} </p>
+        <h1>
+            <a href="">{{ post.titulo }} </a>
+        </h1>
+        <p>{{ post.text|linebreaksbr }} </p>
+    </div>
+    {% endfor %}
+
+</body>
+
+</html>

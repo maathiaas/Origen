@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 
 from django.views.generic.base import TemplateView
 
@@ -22,8 +22,9 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
     path('', include('marketplace.urls')),
+    path('', include('foro.urls')),
     path('', include('django.contrib.auth.urls')),
 ]
 
 
-#from django.views.generic.base import TemplateView CAMBIA el http://127.0.0.1:8000/ por la vista HOME
+# from django.views.generic.base import TemplateView CAMBIA el http://127.0.0.1:8000/ por la vista HOME
