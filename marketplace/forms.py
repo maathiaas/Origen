@@ -16,5 +16,5 @@ class SignUpForm(UserCreationForm):
                 'username': 'Nombre de Usuario',
                 'first_name': 'Nombre',
                 'email': 'Correo',
-
+                'password1': 'Contraseña'
         }

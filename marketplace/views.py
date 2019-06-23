@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth.forms import  AuthenticationForm
+from .models import Producto, Oferta
 
  
 #vista al home
@@ -34,3 +35,14 @@ def login_view(request):
         else:
                 form = AuthenticationForm()
         return render(request,'user/login.html',{'form':form})
+
+
+#Todos los libros, vista basada en funcion
+
+def Productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'producto/allproduct.html', {'productos': productos})
+
+
+def Ofertas(request):
+        return render(request,'producto/ofertas.html')

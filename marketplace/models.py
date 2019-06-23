@@ -1,11 +1,26 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class RegistroUsuario(models.Model):
-    id_user = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=20)
-    correo = models.EmailField(max_length=30)
-    usuario = models.CharField(max_length = 15)
-    contraseña = models.CharField(max_length= 20)
-    def __str__ (self):
+
+class Producto(models.Model):
+    codigo = models.CharField(max_length=9, primary_key=True)
+    nombre = models.CharField(max_length=50)
+    descripcion = models.TextField(blank=True)
+    imagen = models.FileField()
+    proveedor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    precio = models.IntegerField()
+
+    def __str__(self):
+        return self.nombre
+
+
+class Oferta(models.Model):
+    codigo = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=300)
+    oferta = models.ForeignKey('Producto', on_delete=models.CASCADE)
+    fecha_inicio = models.DateField()
+    fecha_termino = models.DateField()
+    descuento_total = models.IntegerField()
+
+    def __str__(self):
         return self.nombre

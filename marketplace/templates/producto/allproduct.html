@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Prudctos</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1> Pruductos </h1>
+
+                {% for productos in productos %} 
+                    <h1>Codigo :{{productos.codigo}}</h1>
+                    <h1>Nombre: {{productos.nombre}}</h1>
+                    <h2>Descripción: {{productos.descripcion}}</h2>
+                    <img src='{{productos.imagen.url}}'>
+                    <p>Proveedor: {{productos.proveedor}}</p>
+                {% endfor %}
+
+</div>
+{% endblock %}
