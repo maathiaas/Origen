@@ -8,7 +8,7 @@ class Producto(models.Model):
     descripcion = models.TextField(blank=True)
     imagen = models.FileField()
     proveedor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    precio = models.IntegerField()
+    precio = models.IntegerField(default=0)
 
     def __str__(self):
         return self.nombre

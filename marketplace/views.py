@@ -41,7 +41,7 @@ def login_view(request):
 
 def Productos(request):
     productos = Producto.objects.all()
-    return render(request, 'producto/allproduct.html', {'productos': productos})
+    return render(request, 'producto/products.html', {'productos': productos})
 
 
 def Ofertas(request):

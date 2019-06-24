@@ -1,13 +1,48 @@
 {% extends 'base.html' %}
-<h1>HOME1</h1>
-{% block head %}
-<title>Inicio</title>
-
-{% endblock %}
+{% load static %}
+{% block tittle %}Inicio{% endblock %}
 
 {% block body %}
-<h1>Inicio </h1>
-
+<div class="w3l_banner_nav_right">
+    <section class="slider">
+      <div class="flexslider">
+        <ul class="slides">
+          <li>
+            <div class="w3l_banner_nav_right_banner">
+              <h3>Encuentra lo que <span>necesitas,</span> a precios bajos.</h3>
+              <div class="more">
+                <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Comprar</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="w3l_banner_nav_right_banner1">
+              <h3>Materiales y alimentos <span>económicos</span> aquí.</h3>
+              <div class="more">
+                <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Comprar</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- flexSlider -->
+    <link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" property="" />
+    <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+    <script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+      animation: "slide",
+      start: function(slider){
+        $('body').removeClass('loading');
+      }
+      });
+    });
+    </script>
+  <!-- //flexSlider -->
+  </div>
+  <div class="clearfix"></div>
+</div> 
 {% if user.is_authenticated %}
 <h1> Datos</h1>
   <p>Nombre de usuario: {{ user.username }}</p>
