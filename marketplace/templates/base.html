@@ -14,6 +14,7 @@
 <!-- //for-mobile-apps -->
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/gallery-style.css' %}" rel="stylesheet" type="text/css" media="all" />
 <!-- font-awesome icons -->
 <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //font-awesome icons -->
@@ -69,8 +70,8 @@
 								<li><a href="{% url 'signup' %}">Registrarse</a></li>
 								{% endif %}
 								{% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Perfil</a></li>
-                <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+								<li><a href="{% url 'profile' %}">Perfil</a></li>
+								<li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
 								{% endif %}
 							</ul>
 						</div>                  
@@ -78,9 +79,11 @@
 				</li>
 			</ul>
 		</div>
+		{% if user.is_authenticated %}
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contactanos</a></h2>
+			<h2><a>Hola, {{ user.first_name }}</a></h2>
 		</div>
+		{% endif %}
 		<div class="clearfix"> </div>
 	</div>
 <!-- script-for sticky-nav -->
@@ -158,12 +161,6 @@
 	{% block body %}
 	<!--BODY-->
 	{% endblock %}
-	<!-- 
-
-		AQUI VA EL CONTENIDO CONCHETUMARE
-
-
-	-->
 <!-- footer -->
 	<div class="footer">
 		<div class="container">

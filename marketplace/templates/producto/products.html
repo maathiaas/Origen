@@ -3,16 +3,48 @@
 {% block tittle %}Productos{% endblock %}
 
 {% block body %}
+
 <div class="container">
-    <h1> Pruductos </h1>
-
-                {% for productos in productos %} 
-                    <h1>Codigo :{{productos.codigo}}</h1>
-                    <h1>Nombre: {{productos.nombre}}</h1>
-                    <h2>Descripción: {{productos.descripcion}}</h2>
-                    <img src='{{productos.imagen.url}}'>
-                    <p>Proveedor: {{productos.proveedor}}</p>
-                {% endfor %}
-
+        <div class="w3l_banner_nav_right">
+                <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+                        <h3 class="w3l_fruit">Productos</h3>
+                        <div class="gallery-container">
+                                {% block content %}
+                                    <div class="galeria">
+                                        {% for productos in productos %} 
+                                        <figure class="box-img" >
+                                            <div class="img-container">
+                                                <img src='{{productos.imagen.url}}'>
+                                            </div>
+                                            <figcaption>
+                                                <h2>{{productos.nombre}}</h2>
+                                                <p>$ {{productos.precio}}</p>
+                                                <p>{{productos.descripcion}}</p>
+                                                <p>{{productos.codigo}}</p>
+                                                {% if user.is_authenticated %}
+                                                <div class="snipcart-details">
+                                                        <form action="#" method="post">
+                                                            <fieldset>
+                                                                <input type="hidden" name="cmd" value="_cart" />
+                                                                <input type="hidden" name="add" value="1" />
+                                                                <input type="hidden" name="business" value=" " />
+                                                                <input type="hidden" name="item_name" value='{{productos.nombre}}' />
+                                                                <input type="hidden" name="amount" value='{{productos.precio}}' />
+                                                                <input type="hidden" name="currency_code" value="CLP" />
+                                                                <input type="hidden" name="return" value=" " />
+                                                                <input type="hidden" name="cancel_return" value=" " />
+                                                                <input type="submit" name="submit" value="Comprar" class="button" />
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+                                                {% endif %}
+                                            </figcaption>
+                                        </figure>
+                                        {% endfor %}
+                                    </div>
+                                {% endblock %}
+                            </div>
+                </div>
+            </div>
 </div>
 {% endblock %}

@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 
-{% block head %}Registro{% endblock %}
+{% block tittle %}Registro{% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1>Registro</h1>
-    <form method="POST">
+    <form  method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <!-- Para dar estilo , debo quitar {{ form.as_p }}  y crear imput con un atributo 
-        name, en donde name tendra por contenido  el campo que quier llenar ejemplo,
-        name='first_name '-->
-
-
-        <button type="submit">Registrar</button>
-        <p><strong>-- O --</strong></p>
-        <a href="#">Registar con  GitHub</a><br>
-        <a href="#">Login with Facebook</a>
+        <div class="w3_login">
+			<div class="w3_login_module">
+				<div class="module form-module">
+				  <div class="toggle">
+				  </div>
+				  <div class="form">
+					<h2>Crear cuenta</h2>
+					<form action="#" method="post">
+                      <input type="text" name="username" maxlength="150" autofocus required id="id_username" placeholder="Usuario">
+                      <input type="text" name="first_name" maxlength="30" id="id_first_name" placeholder="Nombre y apellido">
+                      <input type="email" name="email" maxlength="254" id="id_email" placeholder="E-mail">
+                      <input type="password" name="password1" required id="id_password1" placeholder="Contraseña">
+                      <input type="password" name="password2" required id="id_password2" placeholder="Confirmar contraseña">
+                      <input type="submit" value="Registrar">
+					</form>
+				  </div>
+				  <div class="cta"><a href="#">¿Olvidaste tú contraseña?</a></div>
+				</div>
+			</div>
+		</div>
     </form>
 </div>
 {% endblock %}

@@ -46,3 +46,6 @@ def Productos(request):
 
 def Ofertas(request):
         return render(request,'producto/ofertas.html')
+
+def profile_view(request):
+        return render(request, 'user/profile.html')

@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
 
-{% block head %}Iniciar Sesión{% endblock %}
+{% block tittle %}Iniciar Sesión{% endblock %}
 
 {% block body %}
 <div class="container">
-    <h1> Bienvenido </h1>
-    
-    <p>
-        Puedes iniciar sesión aquí!
-    </p>
-
-
-    <h2>Iniciar sesión</h2>
-
     <form  method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Iniciar sesión</button>
+        <div class="w3_login">
+			<div class="w3_login_module">
+				<div class="module form-module">
+				  <div class="toggle"></div>
+				  <div class="form">
+					<h2>Iniciar sesión</h2>
+					<form action="#" method="post">
+					  <input type="text" name="username" autofocus required id="id_username" placeholder="Usuario">
+					  <input type="password"name="password" required id="id_password" placeholder="Contraseña">
+					  <input type="submit" value="Entrar">
+					</form>
+				  </div>
+				  <div class="cta"><a href="#">¿Olvidaste tú contraseña?</a></div>
+				</div>
+			</div>
+		</div>
     </form>
-    
-    <br>
-
-  <p><strong>-- O --</strong></p>
-  <a href="#">Iniciar sesión con  GitHub</a><br>
-  <a href="#">Login with Facebook</a>
-
 </div>
 {% endblock %}
