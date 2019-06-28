@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'foro/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Posts</title>
-</head>
+{% block content %}
 
-<body>
-    <div>
-        <h1>
-            <a href="/"> Posts </a>
-        </h1>
-    </div>{% for post in posts %} <div>
-        <p> publicado: {{ post.fecha_publicacion }} </p>
-        <h1>
-            <a href="">{{ post.titulo }} </a>
-        </h1>
-        <p>{{ post.text|linebreaksbr }} </p>
-    </div>
+<div class="post">
+    {% for post in posts %}
+    <h1>
+        <h1><a href="{% url 'detalle_post' pk=post.pk %}">Título: {{ post.titulo }}</a></h1>
+    </h1>
+    <p>Texto: {{ post.texto|linebreaksbr }} </p>
+    <p> publicado: {{ post.fecha_publicacion }} </p>
+    <a href="{% url 'detalle_post' pk=post.pk %}">Comentarios: {{ post.comentarios.count }}</a>
+
+    <a class="btn btn-outline-primary ml-2" href="{% url 'añadir_comentario' pk=post.pk %}">Añadir comentario</a>
     {% endfor %}
+</div>
 
-</body>
-
-</html>
+{% endblock %}

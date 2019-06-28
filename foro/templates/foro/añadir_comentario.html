@@ -1,0 +1,10 @@
+{% extends 'foro/base.html' %}
+
+{% block content %}
+<h1>Nuevo comentario</h1>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-outline-primary ml-2">Enviar</button>
+</form>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 <h1>HOME1</h1>
 {% block head %}
 <title>Inicio</title>
@@ -7,13 +8,14 @@
 
 {% block body %}
 <h1>Inicio </h1>
+<h1><a href="{% url 'posts' %}">Posts</a></h1>
 
 {% if user.is_authenticated %}
 <h1> Datos</h1>
-  <p>Nombre de usuario: {{ user.username }}</p>
-  <p>Nombre:  {{ user.first_name }} </p>
-  <p>Correo: {{ user.email }}</p>
-  
+<p>Nombre de usuario: {{ user.username }}</p>
+<p>Nombre: {{ user.first_name }} </p>
+<p>Correo: {{ user.email }}</p>
+
 
 {% endif %}
 

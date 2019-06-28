@@ -1,0 +1,29 @@
+{% extends 'foro/base.html' %}
+
+{% block content %}
+<div class="post">
+    {% if post.fecha_publicacion %}
+    <div class="date">
+        {{ post.fecha_publicacion }}
+    </div>
+    {% endif %}
+    <h2>{{ post.titulo }}</h2>
+    <p>{{ post.texto|linebreaksbr }}</p>
+</div>
+
+<hr>
+<a class="btn btn-outline-primary ml-2" href="{% url 'añadir_comentario' pk=post.pk %}">Añadir comentario</a>
+{% for comentario in post.comentarios.all %}
+{% if user.is_authenticated or comentario.aprobado %}
+<div class="comment">
+    <div class="date">
+        {{ comentario.fecha_creacion }}
+    </div>
+    <strong>Autor: {{ comentario.autor|linebreaks }}</strong>
+    <p>Dijo: {{ comentario.texto|linebreaks }}</p>
+</div>
+{% endif %}
+{% empty %}
+<p>El post no tiene ningún comentario, se el primero en comentar</p>
+{% endfor %}
+{% endblock %}

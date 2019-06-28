@@ -1,0 +1,12 @@
+{% extends 'foro/base.html' %}
+
+{% block content %}
+<h2>Nuevo post</h2>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if user.is_authenticated %}
+    <button type="submit" class="save btn btn-outline-primary ml-2">Guardar</button>
+    {% endif %}
+</form>
+{% endblock %}
