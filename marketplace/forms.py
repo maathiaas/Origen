@@ -1,20 +1,14 @@
-from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from django.contrib.auth.forms import UserCreationForm, forms
+from .models import User, Producto
 
 class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = [
-                'username',
-                'first_name',
-                'email',
-                'password1',
-                'password2'
-            ]
-        labels = {
-                'username': 'Nombre de Usuario',
-                'first_name': 'Nombre',
-                'email': 'Correo',
-                'password_1': 'Contraseña',
-        }
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ('codigo', 'nombre', 'descripcion', 'imagen', 'proveedor', 'precio')

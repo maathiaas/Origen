@@ -5,8 +5,8 @@ from django.db import models
 class Producto(models.Model):
     codigo = models.CharField(max_length=9, primary_key=True)
     nombre = models.CharField(max_length=50)
-    descripcion = models.TextField(blank=True)
-    imagen = models.FileField()
+    descripcion = models.CharField(max_length=100, blank=True)
+    imagen = models.FileField(null=True, blank=True)
     proveedor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     precio = models.IntegerField(default=0)
 

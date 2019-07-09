@@ -71,6 +71,7 @@
 								{% endif %}
 								{% if user.is_authenticated %}
 								<li><a href="{% url 'profile' %}">Perfil</a></li>
+								<li><a href="{% url 'create-prod' %}">Añadir producto</a></li>
 								<li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
 								{% endif %}
 							</ul>

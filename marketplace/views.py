@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .forms import SignUpForm
+from .forms import *
 from django.contrib.auth.forms import  AuthenticationForm
 from .models import Producto, Oferta
 
@@ -18,11 +18,20 @@ def signup_view(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(email=user.email, password=raw_password)
             #login(request, user)
-            return redirect('home')
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'user/signup.html', {'form': form})
 
+def create_prod(request):
+        if request.method == 'POST':
+                form = ProductoForm(request.POST, request.FILES)
+                if form.is_valid():
+                        prod = form.save()
+                        return redirect('producto')
+        else:
+                form = ProductoForm()
+        return render(request, 'producto/create.html', {'form': form})
 
 #iniciar sesion
 def login_view(request):
